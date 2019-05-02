@@ -5,7 +5,7 @@ import java.util.Optional;
 
 
 /**
- * Devoir maison de Mathématiques
+ * Devoir maison de Mathï¿½matiques
  * @authors jonathan CRETE & Emilie Marti
  */
 
@@ -16,7 +16,7 @@ public class Matrice {
 	private final Rational[][] coeff; /* liste des coefficients */
 
 	/**
-	 * Création d'une matrice
+	 * Crï¿½ation d'une matrice
 	 * 
 	 * @param coeff coefficients de la matrice
 	 */
@@ -27,9 +27,9 @@ public class Matrice {
 	}
 
 	/**
-	 * Création d'une matrice
+	 * Crï¿½ation d'une matrice
 	 * 
-	 * @param coeff coefficients de la matrice, donnés comme long
+	 * @param coeff coefficients de la matrice, donnï¿½s comme long
 	 */
 	public Matrice(long[][] coeff) {
 		n = coeff.length;
@@ -46,7 +46,7 @@ public class Matrice {
 	 * Calcul de la somme matricielle this + M (si les dimensions de this et M
 	 * l'autorisent)
 	 * 
-	 * @param M matrice à ajouter : tableau n x m
+	 * @param M matrice ï¿½ ajouter : tableau n x m
 	 * @return somme this + M : tableau n x m
 	 */
 	public Matrice plus(Matrice M) {
@@ -72,7 +72,7 @@ public class Matrice {
 	 * Calcul du produit matriciel this M (si les dimensions de this et M
 	 * l'autorisent)
 	 * 
-	 * @param M matrice à multiplier : tableau m x p
+	 * @param M matrice ï¿½ multiplier : tableau m x p
 	 * @return produit this M : tableau n x p
 	 */
 	public Matrice times(Matrice M) {
@@ -98,9 +98,9 @@ public class Matrice {
 	}
 
 	/**
-	 * Calcul de la transposée de this
+	 * Calcul de la transposï¿½e de this
 	 * 
-	 * @return transposée de this : tableau m x n
+	 * @return transposï¿½e de this : tableau m x n
 	 */
 	public Matrice transpose() {
 		Rational[][] trans = new Rational[m][n];
@@ -115,10 +115,10 @@ public class Matrice {
 	}
 
 	/**
-	 * Échange les lignes i et j de la matrice
+	 * ï¿½change les lignes i et j de la matrice
 	 * 
-	 * @param i première ligne à échanger
-	 * @param j deuxième ligne à échanger
+	 * @param i premiï¿½re ligne ï¿½ ï¿½changer
+	 * @param j deuxiï¿½me ligne ï¿½ ï¿½changer
 	 */
 	private void swapRows(int i, int j) {
 		Rational[] swap = coeff[i];
@@ -127,38 +127,60 @@ public class Matrice {
 	}
 
 	/**
-	 * Ajoute a fois la ligne i de this à sa ligne j
+	 * Ajoute a fois la ligne i de this ï¿½ sa ligne j
 	 * 
-	 * @param i ligne à ajouter (multiplée par a)
-	 * @param j ligne à laquelle on ajoute a fois la ligne j
+	 * @param i ligne ï¿½ ajouter (multiplï¿½e par a)
+	 * @param j ligne ï¿½ laquelle on ajoute a fois la ligne j
 	 * @param a scalaire par lequel on multiplie la ligne i quand on l'ajoute
 	 */
-	private void transvection(int i, int j, Rational a) {
-		/** Remplir ici le code manquant */
+	private void transvection(int i, int j, Rational a)
+	{
+		int index;
+
+		for(int index; index < M.m; ++index)
+		{
+			coeff[index][j].plus(this.multiplyRow(i, a));
+		}
 	}
 
 	/**
 	 * Mutiplie par a la ligne i de this
 	 * 
-	 * @param i ligne à multiplier par a
+	 * @param i ligne ï¿½ multiplier par a
 	 * @param a scalaire par lequel on multiplie la ligne i
 	 */
-	private void multiplyRow(int i, Rational a) {
-		/** Remplir ici le code manquant */
+	private void multiplyRow(int i, Rational a)
+	{
+		for(int index; index < M.m; ++index)
+			coeff[index][i].times(a);
 	}
 
 	/**
-	 * Calcul de la matrice identité de mêmes dimensions que this (si les dimensions
+	 * Calcul de la matrice identitï¿½ de mï¿½mes dimensions que this (si les dimensions
 	 * de this l'autorisent)
 	 * 
-	 * @return matrice identité : tableau n x n
+	 * @return matrice identitï¿½ : tableau n x n
 	 */
-	public Matrice identity() {
-		if (m != n) {
+	public Matrice identity()
+	{
+		if (m != n)
+		{
 			throw new IllegalArgumentException("Dimensions incorrectes");
 		}
 		Rational[][] id = new Rational[n][n];
-		/** Remplir ici le code manquant */
+
+		int i, j;
+		for(i = 0; i < n; ++i)
+		{
+			for(j = 0; j < n; ++j)
+			{
+				if(j == i)
+					id[i][j] = 1;
+				else
+					id[i][j] = 0;
+			}
+		}
+
 		return new Matrice(id);
 	}
 
@@ -182,14 +204,70 @@ public class Matrice {
 	 * 
 	 * @return inverse de this : tableau n x n
 	 */
-	public Matrice inverse() {
-		if (m != n) {
+	public Matrice inverse()
+	{
+		if (m != n)
+		{
 			throw new IllegalArgumentException("Dimensions incorrectes");
 		}
 		Matrice clone = clone();
 		Matrice id = identity();
+
+		int size = n;
+
+		Rational[][] augmentedMatrix = new Rational[size*2][size];
+
+		int i, j;
+
+		/**
+		 * create augmented matrix
+		 */
+		for(i = 0; i < size; ++i)
+		{
+			/**
+			 * going through each column of the row
+			 */
+			for(j = 0; j < (size*2); j++)
+			{
+				/**
+				 * Create new augmented matrix (matrix + identity joined)
+				 */
+				if(j == (i+size))
+					augmentedMatrix[i][j] = 1;
+			}
+		}
+
+		/**
+		 * Gaussian elimination algorithm
+		 */
+		for(i = 0; i < size; ++i)
+		{
+			/**
+			 * going through each column of the row
+			 */
+			for(j = 0; j < (size*2); j++)
+			{
+				/**
+				 * Divide each element by its diagonal element
+				 * To make it equal to 1 already
+				 */
+				coeff[j][i].divide(coeff[i][i]);
+
+				/**
+				 * This is where the algorithm gets tricky.
+				 * Now all the diagonal elements on the left part of the matrix are at one.
+				 * We want to make all 0 under the diagonal using transvection method.
+				 * How do we choose the right diagonals to do it ?
+				 */
+			}
+			/**
+			 * this is where we will use transvection method (foreach row)
+			 */
+		}
+
+
 		/** Remplir ici le code manquant */
-		/** On suggère très fortement d'utiliser l'algorithme du pivot de Gauss */
+		/** On suggï¿½re trï¿½s fortement d'utiliser l'algorithme du pivot de Gauss */
 		return id;
 	}
 
