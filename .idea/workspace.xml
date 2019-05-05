@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4b574cb-01dd-461e-9b63-60fc2caf26a2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matrice.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Rational.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cr.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cr.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/maths/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/maths/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/maths/Matrice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/maths/Matrice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/maths/Rational.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/maths/Rational.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/maths/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="15" column="96" selection-start-line="15" selection-start-column="96" selection-end-line="15" selection-end-column="96" />
+            <state relative-caret-position="169">
+              <caret line="23" column="69" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
             </state>
           </provider>
         </entry>
@@ -33,10 +30,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/maths/Matrice.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="356" lean-forward="true" selection-start-line="356" selection-end-line="356" />
+            <state relative-caret-position="-6">
+              <caret line="280" column="23" lean-forward="true" selection-start-line="280" selection-start-column="23" selection-end-line="280" selection-end-column="23" />
               <folding>
-                <element signature="e#7338#7339#0" expanded="true" />
+                <element signature="e#6903#6904#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,7 +89,6 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="683" />
     <option name="y" value="27" />
     <option name="width" value="683" />
     <option name="height" value="741" />
@@ -154,6 +150,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -205,18 +202,17 @@
       <workItem from="1556880646103" duration="367000" />
       <workItem from="1556971136187" duration="2202000" />
       <workItem from="1556973517479" duration="7502000" />
-      <workItem from="1557052255004" duration="18598000" />
+      <workItem from="1557052255004" duration="21759000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34843000" />
+    <option name="totallyTimeSpent" value="38004000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="683" y="27" width="683" height="741" extended-state="4" />
-    <editor active="true" />
+    <frame x="0" y="27" width="1366" height="741" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23464566" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.031866465" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -225,7 +221,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49924126" visible="true" weight="0.45833334" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49924126" visible="true" weight="0.30833334" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -255,6 +251,16 @@
     <entry file="file://$PROJECT_DIR$/Main.java" />
     <entry file="file://$PROJECT_DIR$/Matrice.java" />
     <entry file="file://$PROJECT_DIR$/Rational.java" />
+    <entry file="file://$PROJECT_DIR$/src/maths/Matrice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6">
+          <caret line="280" column="23" lean-forward="true" selection-start-line="280" selection-start-column="23" selection-end-line="280" selection-end-column="23" />
+          <folding>
+            <element signature="e#6903#6904#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/maths/Rational.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="65">
@@ -278,20 +284,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/maths/Matrice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="356" lean-forward="true" selection-start-line="356" selection-end-line="356" />
-          <folding>
-            <element signature="e#7338#7339#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/maths/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="15" column="96" selection-start-line="15" selection-start-column="96" selection-end-line="15" selection-end-column="96" />
+        <state relative-caret-position="169">
+          <caret line="23" column="69" selection-start-line="23" selection-start-column="69" selection-end-line="23" selection-end-column="69" />
         </state>
       </provider>
     </entry>

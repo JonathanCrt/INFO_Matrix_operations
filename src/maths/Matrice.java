@@ -316,8 +316,6 @@ public class Matrice {
 			}
 		}
 
-		System.out.println("augmented Matrix after operations =\n" + augmentedMatrix + "\n");
-
 		/**
 		 * Extract inverse Matrix from augmented matrix
 		 */
@@ -334,25 +332,6 @@ public class Matrice {
 		Matrice inverse = new Matrice(inverseCoeff);
 
 		return inverse;
-	}
-
-	public Matrice SolveLinearEquation()
-	{
-		if(m <= n || n < (m-1))
-		{
-			throw new IllegalStateException("This system has not one solution");
-		}
-
-		Rational[][] results = new Rational[n][1];
-
-		for(int i = 0; i < n; ++i)
-		{
-			results[i][0] = this.coeff[i][n-1];
-		}
-
-		Matrice B = new Matrice(results);
-
-		return B.times(this.inverse());
 	}
 
 	@Override

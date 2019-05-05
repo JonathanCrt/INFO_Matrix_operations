@@ -15,44 +15,21 @@ public class Main {
 
 		Matrice linearSystem = new Matrice(new long[][] {{1, 1, 1, 21}, {-99, 0, 99, 198}, {1, -3, 1, 1}});
 
-		System.out.println("\n" + linearSystem);
-		/*
-		Matrice A = new Matrice(new long[][] { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 13 } });
-		Matrice B = A.times(A.transpose());
-		Matrice C = B.inverse();
-		System.out.println(C);
-		Matrice D = A.transpose().times(A);
+		System.out.println("\t" + linearSystem);
 
+		Matrice linearSystemReduced = new Matrice(new long[][] {{1, 1, 1}, {-99, 0, 99}, {1, -3, 1}});
 
+		Matrice inverse = linearSystemReduced.inverse();
 
-		try {
-			Matrice E = D.inverse();
-			System.out.println(E);
-		} catch (ArithmeticException e) {
-			System.out.println("D n'a pas d'inverse");
-		}
-		*/
+		System.out.println("\nOn calcule la matrice inverse de notre systeme reduit (sans la derniere colonne) :\n\t" + inverse);
 
-/*
-		// test  Matrices
-		Matrice A = new Matrice(new long[][] { { 1, 2 }, { 0, 0 }, { 0, 0  } });
-		//Matrice B = new Matrice(new long[][] { { 1, 0 }, { 1, 1 }, { 2, -3  } });
-		Matrice C = new Matrice(new long[][] { { 1, 0, 9 }, { 1, 1, 6 } });
-		
-		// R�sultat attendu : { 2, 2 }, { 1, 1 }, { 2, -3  }
-		//System.out.println(A.plus(B)); //[[2, 2], [1, 1], [2, -3]]
-		
-		// R�sultat attendu : { 1, 2 }, { 1, 2 }
+		System.out.println("\nAfin de resoudre le systeme, on multiplie l'inverse calculee ci-dessus par la derniere colonne de notre systeme :\n");
 
-		Matrice matrix = new Matrice(new long[][] {{1, 2}, {-1, 0}});
-		//Matrice matrix = C.times(A);
-		System.out.println("Matrix = \n" + matrix); // [[1, 2], [1, 2]]
+		Matrice results = new Matrice(new long[][] {{21}, {198}, {1}});
 
-		System.out.println("identity =\n" + matrix.identity());
+		System.out.println("\t" + inverse + " x " + results + " = " + inverse.times(results));
 
-		System.out.println("inverse =\n" + matrix.inverse());*/
-
-
+		System.out.println("\nLe nombre recherche est 759.");
 	}
 
 }
