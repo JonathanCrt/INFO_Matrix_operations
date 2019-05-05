@@ -1,8 +1,6 @@
 package maths;
 
 import java.util.Arrays;
-import java.util.Optional;
-
 
 /**
  * Devoir maison de Math�matiques
@@ -59,16 +57,11 @@ public class Matrice {
 		int i,j;
 		for(i = 0; i < M.n; i++) {
 			for(j = 0; j< M.m;  j++) {
-				sum[i][j] = coeff[i][j].plus(M.coeff[i][j]);			
-				
+				sum[i][j] = this.coeff[i][j].plus(M.coeff[i][j]);			
 			}
 		}
-		/** Remplir ici le code manquant */
 		return new Matrice(sum);
 	}
-
-
-
 
 	/**
 	 * Calcul du produit matriciel this M (si les dimensions de this et M
@@ -84,7 +77,18 @@ public class Matrice {
 		int p = M.m;
 
 		Rational[][] prod = new Rational[n][p];
-		/** Remplir ici le code manquant */
+		int i, j, k;
+		for(i = 0; i < n; i++) {
+			for(j = 0; j < p; j++) {
+				Rational calc = new Rational(0);
+ 				for(k = 0; k < m; k++) {
+					
+					calc =  calc.plus(this.coeff[i][k].times(M.coeff[k][j]));
+
+				}
+ 				prod[i][j] = calc;
+			}
+		}
 		return new Matrice(prod);
 	}
 
@@ -95,7 +99,13 @@ public class Matrice {
 	 */
 	public Matrice transpose() {
 		Rational[][] trans = new Rational[m][n];
-		/** Remplir ici le code manquant */
+		
+		int i,j;
+		for(i = 0; i <m; i++) {
+			for(j = 0; j < n; j++) {
+				trans[j][i] = coeff[i][j];
+			}
+		}
 		return new Matrice(trans);
 	}
 
@@ -106,18 +116,24 @@ public class Matrice {
 	 * @param j deuxi�me ligne � �changer
 	 */
 	private void swapRows(int i, int j) {
-		/** Remplir ici le code manquant */
+		Rational[] swap = coeff[i];
+		coeff[i] = coeff[j];
+		coeff[i] = swap;
 	}
 
 	/**
-	 * Ajoute a fois la ligne i de this � sa ligne j
+	 * Ajoute a fois la ligne i de this a sa ligne j
 	 * 
-	 * @param i ligne � ajouter (multipl�e par a)
-	 * @param j ligne � laquelle on ajoute a fois la ligne j
+	 * @param i ligne à ajouter (multipliée par a)
+	 * @param j ligne à laquelle on ajoute a fois la ligne i
 	 * @param a scalaire par lequel on multiplie la ligne i quand on l'ajoute
 	 */
-	private void transvection(int i, int j, Rational a) {
-		/** Remplir ici le code manquant */
+	private void transvection(int i, int j, Rational a)
+	{
+		for(int index = 0; index < this.m; ++index)
+		{
+			coeff[j][index] = coeff[j][index].plus(coeff[i][index].times(a));
+		}
 	}
 
 	/**
@@ -126,8 +142,12 @@ public class Matrice {
 	 * @param i ligne � multiplier par a
 	 * @param a scalaire par lequel on multiplie la ligne i
 	 */
-	private void multiplyRow(int i, Rational a) {
-		/** Remplir ici le code manquant */
+	private void multiplyRow(int i, Rational a)
+	{
+		for(int index = 0; index < m; ++index)
+		{
+			coeff[i][index] = coeff[i][index].times(a);
+		}
 	}
 
 	/**
@@ -136,12 +156,26 @@ public class Matrice {
 	 * 
 	 * @return matrice identit� : tableau n x n
 	 */
-	public Matrice identity() {
-		if (m != n) {
+	public Matrice identity()
+	{
+		if (m != n)
+		{
 			throw new IllegalArgumentException("Dimensions incorrectes");
 		}
+
 		Rational[][] id = new Rational[n][n];
-		/** Remplir ici le code manquant */
+
+		for(int i = 0; i < n; ++i)
+		{
+			for(int j = 0; j < n; ++j)
+			{
+				if(j == i)
+					id[i][j] = Rational.ONE;
+				else
+					id[i][j] = Rational.ZERO;
+			}
+		}
+
 		return new Matrice(id);
 	}
 
@@ -160,25 +194,170 @@ public class Matrice {
 		return new Matrice(clone);
 	}
 
+	private Matrice augmentedMatrix()
+	{
+		Matrice clone = clone();
+		Matrice id = identity();
+
+		int size = n;
+
+		Rational[][] augmentedMatrixRational = new Rational[size][size*2];
+
+		/**
+		 * create augmented matrix
+		 */
+		for(int i = 0; i < size; ++i)
+		{
+			/**
+			 * going through each column of the row
+			 */
+			for(int j = 0; j < size; j++)
+			{
+				/**
+				 * Create new augmented matrix (matrix + identity joined)
+				 */
+				augmentedMatrixRational[j][i] = clone.coeff[j][i];
+				augmentedMatrixRational[j][i+size] = id.coeff[j][i];
+			}
+		}
+
+		Matrice augmentedMatrix = new Matrice(augmentedMatrixRational);
+
+		return augmentedMatrix;
+	}
+
 	/**
 	 * Calcul de l'inverse de this
 	 * 
 	 * @return inverse de this : tableau n x n
 	 */
-	public Matrice inverse() {
-		if (m != n) {
+	public Matrice inverse()
+	{
+		if (m != n)
+		{
 			throw new IllegalArgumentException("Dimensions incorrectes");
 		}
-		Matrice clone = clone();
-		Matrice id = identity();
-		/** Remplir ici le code manquant */
-		/** On sugg�re tr�s fortement d'utiliser l'algorithme du pivot de Gauss */
-		return id;
+
+		int size = n;
+
+		Matrice augmentedMatrix = augmentedMatrix();
+
+		Rational rationalOne = Rational.ONE;
+		Rational rationalZero = Rational.ZERO;
+
+		int i, j;
+
+		/**
+		 * Gaussian elimination algorithm
+		 * Going through rows
+		 */
+		for(i = 0; i < size; ++i)
+		{
+			if(augmentedMatrix.coeff[i][i] == rationalZero)
+			{
+				throw new IllegalStateException("Inverse cannot be found");
+			}
+
+			/**
+			 * Divide each value by the diagonal value
+			 * We need diagonal to be only ones
+			 */
+			if(augmentedMatrix.coeff[i][i] != rationalOne)
+			{
+				augmentedMatrix.multiplyRow(i, augmentedMatrix.coeff[i][i].inverse());
+			}
+
+			Rational constant;
+
+			/**
+			 * All zeros below diagonal
+			 */
+			if(i < (size - 1))
+			{
+				for(j = 0; j < size; ++j)
+				{
+					/**
+					 * Make transvection to all lines below
+					 */
+					if(j != i)
+					{
+						constant = augmentedMatrix.coeff[j][i];
+
+						if(augmentedMatrix.coeff[j][i].isSameSign(constant))
+						{
+							constant = constant.minus();
+						}
+						augmentedMatrix.transvection(i, j, constant);
+					}
+				}
+			}
+
+			/**
+			 * All zeros above diagonal
+			 */
+			if(i > 0)
+			{
+				for(j = (size - 1); j >= 0; --j)
+				{
+					/**
+					 * Make transvection to all lines above
+					 */
+					if(j != i)
+					{
+						constant = augmentedMatrix.coeff[j][i];
+
+						if(augmentedMatrix.coeff[j][i].isSameSign(constant))
+						{
+							constant = constant.minus();
+						}
+						augmentedMatrix.transvection(i, j, constant);
+					}
+				}
+			}
+		}
+
+		System.out.println("augmented Matrix after operations =\n" + augmentedMatrix + "\n");
+
+		/**
+		 * Extract inverse Matrix from augmented matrix
+		 */
+		Rational[][] inverseCoeff = new Rational[size][size];
+
+		for(i = 0; i < size; ++i)
+		{
+			for(j = 0; j < size; ++j)
+			{
+				inverseCoeff[i][j] = augmentedMatrix.coeff[i][size+j];
+			}
+		}
+
+		Matrice inverse = new Matrice(inverseCoeff);
+
+		return inverse;
+	}
+
+	public Matrice SolveLinearEquation()
+	{
+		if(m <= n || n < (m-1))
+		{
+			throw new IllegalStateException("This system has not one solution");
+		}
+
+		Rational[][] results = new Rational[n][1];
+
+		for(int i = 0; i < n; ++i)
+		{
+			results[i][0] = this.coeff[i][n-1];
+		}
+
+		Matrice B = new Matrice(results);
+
+		return B.times(this.inverse());
 	}
 
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return Arrays.deepToString(coeff);
 	}
-
 }

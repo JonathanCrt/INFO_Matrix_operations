@@ -1,0 +1,14 @@
+Compte rendu, Jonathan CRETE & Emilie MARTI
+-------------
+
+Exercice 1
+---------- 
+Astronomie et physique, problème de N-corps.
+En mécanique, Il s’agit de l’étude de N points matériels soumis chacun à l’attraction gravitationnelle
+des autres points.
+Le problème de 2-corps est un problème assez connu en mécanique "céleste" : 
+Soient maintenant deux points M1 = (x1, y1, z1)
+						   et M2 = (x2, y2, z2)     
+de masses respectives m1 et m2.
+
+A l'aide de la loi de Newton et d'un systèmes d'équations à N inconnus il est possible de résoudre ce problème.

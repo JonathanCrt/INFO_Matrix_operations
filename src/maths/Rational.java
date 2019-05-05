@@ -123,6 +123,21 @@ public class Rational {
 		return new Rational(p * r.q, q * r.p);
 	}
 
+	/**
+	 * Check whether two rationals have the same sign or not
+	 * @param rational
+	 * @return boolean
+	 */
+	public boolean isSameSign(Rational rational)
+	{
+		if(this.p / this.q > 0 && rational.p / rational.q > 0)
+			return true;
+		else if(this.p / this.q < 0 && rational.p / rational.q < 0)
+			return true;
+		else
+			return false;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (o instanceof Rational) {
