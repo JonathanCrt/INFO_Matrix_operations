@@ -3,12 +3,54 @@ Compte rendu, Jonathan CRETE & Emilie MARTI
 
 Exercice 1
 ---------- 
-Astronomie et physique, problème de N-corps.
-En mécanique, Il s’agit de l’étude de N points matériels soumis chacun à l’attraction gravitationnelle
-des autres points.
-Le problème de 2-corps est un problème assez connu en mécanique "céleste" : 
-Soient maintenant deux points M1 = (x1, y1, z1)
-						   et M2 = (x2, y2, z2)     
-de masses respectives m1 et m2.
+La somme des chiffres d'un nombre à trois chiffres est 21.
+Si le numéro est inversé (abc -> cba), le nouveau nombre dépasse de 198 le nombre original.
+La somme du premier et du dernier chiffre dépasse de 1 le deuxième chiffre multiplié par 3.
+Quel est ce nombre ?
 
-A l'aide de la loi de Newton et d'un systèmes d'équations à N inconnus il est possible de résoudre ce problème.
+On modelise :
+	- a + b + c = 21					a + b + c = 21
+	- 100a + 10b + c + 198 = 100c + 10b + a		-->	-99a + 99c = 198
+	- a + c = 3b + 1					a - 3b + c = 1
+
+Notre système est :
+
+a + b + c = 21
+-99a + 99c = 198
+a - 3b + c = 1
+
+La résolution de ce système est fait par le programme donné ci-joint et le détail de la résolution est indiqué ci-dessous à l'exercice 11.
+
+----------
+----------
+Exercice 10
+----------
+
+----------
+----------
+Exercice 11
+----------
+Afin de résoudre le système linéaire décrit ci-dessus sur l'exercice 1, on pose :
+
+M = [[1, 1, 1], [-99, 0, 99], [1, -3, 1]]
+X = [[a], [b], [c]]
+B = [[21], [198], [1]]
+
+Le programme calcule l'inverse de M :
+M' = [[3/8, -1/198, 1/8], [1/4, 0, -1/4], [3/8, 1/198, 1/8]]
+
+On sait que :
+	MX = B
+	M'MX = M'B
+	IX = M'B
+	X = M'B
+
+On cherche les valeurs de X (qui est la matrice des inconnues). Pour cela, le programme calcule la matrice inverse de M puis multiplie le résultat par B.
+
+Lorsque le programme est exécuté, il réalise ces calculs sur le problème trouvé ci-dessus. Il trouve comme résultat :
+
+Resultat = [[7], [5], [9]]
+
+Soit a = 7, b = 5 et c = 9. Donc, le numéro recherché est 759.
+
+
